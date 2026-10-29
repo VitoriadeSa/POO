@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="680.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="livros.fx.PrincipalController">
+   <top>
+      <MenuBar>
+         <Menu text="Ficheiro">
+            <MenuItem onAction="#guardarMenu" text="Guardar" />
+            <SeparatorMenuItem />
+            <MenuItem onAction="#sair" text="Sair" />
+         </Menu>
+         <Menu text="Ajuda">
+            <MenuItem onAction="#sobre" text="Sobre" />
+         </Menu>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+
+         <!-- ============================== LIVROS ============================== -->
+         <Tab text="Livros">
+            <BorderPane>
+               <top>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <padding><Insets bottom="8.0" left="10.0" right="10.0" top="10.0" /></padding>
+                     <TextField fx:id="txtPesquisa" prefWidth="260.0" promptText="Pesquisar título, autor, editora, ISBN..." />
+                     <ComboBox fx:id="cbFiltroCategoria" prefWidth="170.0" promptText="Categoria" />
+                     <ComboBox fx:id="cbFiltroLocalizacao" prefWidth="210.0" promptText="Localização" />
+                     <ComboBox fx:id="cbFiltroEstado" prefWidth="140.0" promptText="Estado" />
+                     <Button onAction="#limparFiltros" text="Limpar filtros" />
+                  </HBox>
+               </top>
+               <center>
+                  <SplitPane dividerPositions="0.7">
+                     <TableView fx:id="tabelaLivros">
+                        <columns>
+                           <TableColumn fx:id="colId" prefWidth="45.0" text="Nº" />
+                           <TableColumn fx:id="colTipo" prefWidth="110.0" text="Tipo" />
+                           <TableColumn fx:id="colTitulo" prefWidth="220.0" text="Título" />
+                           <TableColumn fx:id="colAutor" prefWidth="150.0" text="Autor" />
+                           <TableColumn fx:id="colCategoria" prefWidth="120.0" text="Categoria" />
+                           <TableColumn fx:id="colLocalizacao" prefWidth="180.0" text="Localização" />
+                           <TableColumn fx:id="colEstado" prefWidth="95.0" text="Estado" />
+                           <TableColumn fx:id="colDataAquisicao" prefWidth="95.0" text="Aquisição" />
+                        </columns>
+                     </TableView>
+                     <VBox spacing="6.0">
+                        <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                        <Label styleClass="titulo-secao" text="Detalhes" />
+                        <TextArea fx:id="txtDetalhes" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
+                     </VBox>
+                  </SplitPane>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <padding><Insets bottom="10.0" left="10.0" right="10.0" top="8.0" /></padding>
+                     <Button onAction="#novoLivro" styleClass="botao-principal" text="Novo livro" />
+                     <Button onAction="#editarLivro" text="Editar" />
+                     <Button onAction="#removerLivro" text="Remover" />
+                     <Button onAction="#emprestarLivro" text="Emprestar" />
+                     <Button onAction="#registarDesaparecimento" text="Registar desaparecimento" />
+                     <Button onAction="#registarRecuperacao" text="Registar recuperação" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblContagem" />
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </Tab>
+
+         <!-- ============================ EMPRÉSTIMOS ============================ -->
+         <Tab text="Empréstimos">
+            <BorderPane>
+               <top>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <padding><Insets bottom="8.0" left="10.0" right="10.0" top="10.0" /></padding>
+                     <CheckBox fx:id="chkSoAtivos" onAction="#atualizarEmprestimos" selected="true" text="Mostrar só empréstimos ativos" />
+                  </HBox>
+               </top>
+               <center>
+                  <TableView fx:id="tabelaEmprestimos">
+                     <columns>
+                        <TableColumn fx:id="colEmpLivro" prefWidth="260.0" text="Livro" />
+                        <TableColumn fx:id="colEmpAmigo" prefWidth="170.0" text="Amigo" />
+                        <TableColumn fx:id="colEmpData" prefWidth="110.0" text="Emprestado em" />
+                        <TableColumn fx:id="colEmpPrevista" prefWidth="120.0" text="Devolução prevista" />
+                        <TableColumn fx:id="colEmpDevolucao" prefWidth="110.0" text="Devolvido em" />
+                        <TableColumn fx:id="colEmpSituacao" prefWidth="160.0" text="Situação" />
+                     </columns>
+                  </TableView>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <padding><Insets bottom="10.0" left="10.0" right="10.0" top="8.0" /></padding>
+                     <Button onAction="#devolverEmprestimo" styleClass="botao-principal" text="Registar devolução" />
+                     <Button onAction="#prolongarEmprestimo" text="Alterar data prevista" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label text="Os empréstimos atrasados aparecem a vermelho." />
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </Tab>
+
+         <!-- =============================== AMIGOS =============================== -->
+         <Tab text="Amigos">
+            <SplitPane dividerPositions="0.55">
+               <VBox spacing="8.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <TableView fx:id="tabelaAmigos" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colAmigoNome" prefWidth="180.0" text="Nome" />
+                        <TableColumn fx:id="colAmigoTelefone" prefWidth="110.0" text="Telefone" />
+                        <TableColumn fx:id="colAmigoEmail" prefWidth="200.0" text="Email" />
+                     </columns>
+                  </TableView>
+                  <HBox spacing="8.0">
+                     <TextField fx:id="txtAmigoNome" promptText="Nome" HBox.hgrow="ALWAYS" />
+                     <TextField fx:id="txtAmigoTelefone" prefWidth="110.0" promptText="Telefone" />
+                     <TextField fx:id="txtAmigoEmail" promptText="Email" HBox.hgrow="ALWAYS" />
+                  </HBox>
+                  <HBox spacing="8.0">
+                     <Button onAction="#adicionarAmigo" styleClass="botao-principal" text="Adicionar" />
+                     <Button onAction="#editarAmigo" text="Guardar alterações" />
+                     <Button onAction="#removerAmigo" text="Remover" />
+                  </HBox>
+               </VBox>
+               <VBox spacing="6.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <Label styleClass="titulo-secao" text="Empréstimos do amigo selecionado" />
+                  <ListView fx:id="listaEmprestimosAmigo" VBox.vgrow="ALWAYS" />
+               </VBox>
+            </SplitPane>
+         </Tab>
+
+         <!-- ===================== CATEGORIAS E LOCALIZAÇÕES ===================== -->
+         <Tab text="Categorias e localizações">
+            <SplitPane dividerPositions="0.5">
+               <VBox spacing="8.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <Label styleClass="titulo-secao" text="Categorias" />
+                  <ListView fx:id="listaCategorias" VBox.vgrow="ALWAYS" />
+                  <TextField fx:id="txtCategoriaNome" promptText="Nome da categoria" />
+                  <TextField fx:id="txtCategoriaDescricao" promptText="Descrição" />
+                  <HBox spacing="8.0">
+                     <Button onAction="#adicionarCategoria" styleClass="botao-principal" text="Adicionar" />
+                     <Button onAction="#removerCategoria" text="Remover" />
+                  </HBox>
+               </VBox>
+               <VBox spacing="8.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <Label styleClass="titulo-secao" text="Localizações" />
+                  <ListView fx:id="listaLocalizacoes" VBox.vgrow="ALWAYS" />
+                  <HBox spacing="8.0">
+                     <TextField fx:id="txtDivisao" promptText="Divisão (ex.: Sala)" HBox.hgrow="ALWAYS" />
+                     <TextField fx:id="txtEstante" promptText="Estante" HBox.hgrow="ALWAYS" />
+                     <TextField fx:id="txtPrateleira" prefWidth="90.0" promptText="Prateleira" />
+                  </HBox>
+                  <HBox spacing="8.0">
+                     <Button onAction="#adicionarLocalizacao" styleClass="botao-principal" text="Adicionar" />
+                     <Button onAction="#removerLocalizacao" text="Remover" />
+                  </HBox>
+               </VBox>
+            </SplitPane>
+         </Tab>
+
+         <!-- ================= AQUISIÇÕES E DESAPARECIMENTOS ================= -->
+         <Tab text="Aquisições e desaparecimentos">
+            <SplitPane dividerPositions="0.55" orientation="VERTICAL">
+               <VBox spacing="8.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <HBox alignment="CENTER_LEFT" spacing="8.0">
+                     <Label styleClass="titulo-secao" text="Aquisições de" />
+                     <DatePicker fx:id="dpInicio" prefWidth="130.0" />
+                     <Label text="a" />
+                     <DatePicker fx:id="dpFim" prefWidth="130.0" />
+                     <Button onAction="#filtrarAquisicoes" text="Filtrar" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblTotalAquisicoes" />
+                  </HBox>
+                  <TableView fx:id="tabelaAquisicoes" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colAqData" prefWidth="100.0" text="Data" />
+                        <TableColumn fx:id="colAqTitulo" prefWidth="300.0" text="Livro" />
+                        <TableColumn fx:id="colAqForma" prefWidth="100.0" text="Forma" />
+                        <TableColumn fx:id="colAqPreco" prefWidth="90.0" text="Preço" />
+                     </columns>
+                  </TableView>
+               </VBox>
+               <VBox spacing="8.0">
+                  <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                  <Label styleClass="titulo-secao" text="Desaparecimentos" />
+                  <TableView fx:id="tabelaDesaparecimentos" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colDesLivro" prefWidth="260.0" text="Livro" />
+                        <TableColumn fx:id="colDesData" prefWidth="100.0" text="Data" />
+                        <TableColumn fx:id="colDesDescricao" prefWidth="320.0" text="Descrição" />
+                        <TableColumn fx:id="colDesRecuperacao" prefWidth="120.0" text="Recuperado em" />
+                     </columns>
+                  </TableView>
+               </VBox>
+            </SplitPane>
+         </Tab>
+
+         <!-- ============================ ESTATÍSTICAS ============================ -->
+         <Tab text="Estatísticas">
+            <HBox spacing="10.0">
+               <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+               <TextArea fx:id="txtEstatisticas" editable="false" prefWidth="320.0" />
+               <PieChart fx:id="graficoCategorias" title="Livros por categoria" HBox.hgrow="ALWAYS" />
+               <BarChart fx:id="graficoAquisicoes" legendVisible="false" title="Aquisições por ano" HBox.hgrow="ALWAYS">
+                  <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
+                  <yAxis><NumberAxis side="LEFT" tickUnit="1.0" minorTickVisible="false" /></yAxis>
+               </BarChart>
+            </HBox>
+         </Tab>
+      </TabPane>
+   </center>
+</BorderPane>

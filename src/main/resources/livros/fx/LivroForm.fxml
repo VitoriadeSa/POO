@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="livros.fx.LivroFormController">
+   <padding><Insets bottom="14.0" left="14.0" right="14.0" top="14.0" /></padding>
+   <GridPane hgap="10.0" vgap="8.0">
+      <columnConstraints>
+         <ColumnConstraints minWidth="110.0" />
+         <ColumnConstraints hgrow="ALWAYS" />
+         <ColumnConstraints minWidth="90.0" />
+         <ColumnConstraints hgrow="ALWAYS" />
+      </columnConstraints>
+
+      <Label text="Tipo" GridPane.rowIndex="0" />
+      <ComboBox fx:id="cbTipo" maxWidth="Infinity" onAction="#tipoAlterado" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+      <Label text="Título *" GridPane.rowIndex="1" />
+      <TextField fx:id="txtTitulo" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+
+      <Label text="Autor *" GridPane.rowIndex="2" />
+      <TextField fx:id="txtAutor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="Editora" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <TextField fx:id="txtEditora" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+      <Label text="ISBN" GridPane.rowIndex="3" />
+      <TextField fx:id="txtIsbn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label text="Idioma" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <TextField fx:id="txtIdioma" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+      <Label text="Ano de publicação" GridPane.rowIndex="4" />
+      <TextField fx:id="txtAno" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Nº de páginas" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <TextField fx:id="txtPaginas" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+
+      <Label text="Categoria" GridPane.rowIndex="5" />
+      <ComboBox fx:id="cbCategoria" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Label text="Localização" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <ComboBox fx:id="cbLocalizacao" maxWidth="Infinity" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+      <Label text="Data de aquisição" GridPane.rowIndex="6" />
+      <DatePicker fx:id="dpAquisicao" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label text="Forma" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <ComboBox fx:id="cbForma" maxWidth="Infinity" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+
+      <Label text="Preço (€)" GridPane.rowIndex="7" />
+      <TextField fx:id="txtPreco" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+      <Label fx:id="lblIlustrador" text="Ilustrador" GridPane.rowIndex="8" />
+      <TextField fx:id="txtIlustrador" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label fx:id="lblSerie" text="Série / volume" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+      <HBox spacing="6.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+         <TextField fx:id="txtSerie" HBox.hgrow="ALWAYS" />
+         <TextField fx:id="txtVolume" prefWidth="50.0" promptText="vol." />
+      </HBox>
+
+      <Label text="Notas" GridPane.rowIndex="9" />
+      <TextArea fx:id="txtNotas" prefRowCount="3" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+   </GridPane>
+   <HBox alignment="CENTER_RIGHT" spacing="8.0">
+      <Label fx:id="lblErro" styleClass="erro" />
+      <Region HBox.hgrow="ALWAYS" />
+      <Button cancelButton="true" onAction="#cancelar" text="Cancelar" />
+      <Button defaultButton="true" onAction="#guardar" styleClass="botao-principal" text="Guardar" />
+   </HBox>
+</VBox>

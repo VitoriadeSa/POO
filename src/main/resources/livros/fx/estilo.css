@@ -1,0 +1,29 @@
+.root {
+    -fx-font-size: 13px;
+}
+
+.titulo-secao {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.botao-principal {
+    -fx-base: #3b6ea5;
+}
+
+.erro {
+    -fx-text-fill: #c0392b;
+}
+
+.table-row-cell.atrasado {
+    -fx-background-color: #f8d7da;
+}
+
+.table-row-cell.atrasado:selected {
+    -fx-background-color: #c0392b;
+}
+
+.table-row-cell.desaparecido .text {
+    -fx-fill: #888888;
+    -fx-strikethrough: true;
+}

@@ -1,0 +1,5 @@
+target/
+biblioteca.dat
+.idea/
+*.iml
+.DS_Store
