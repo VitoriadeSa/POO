@@ -1,12 +1,12 @@
 /*
- * G99 - Programação Orientada a Objetos 2026/2027 - Trabalho Prático
+ * G16 - Programação Orientada a Objetos 2026/2027 - Trabalho Prático
  * Tema T03 - Os meus livros
  *
  * Elementos do grupo:
- *   - aNNNNN  Nome Apelido
- *   - aNNNNN  Nome Apelido
- *   - aNNNNN  Nome Apelido
- *   - aNNNNN  Nome Apelido
+ *   - aNNNNN  Rodrigo
+ *   - 54111  Vitória Sá
+ *   - 54482  Inês Menezes
+ *   - aNNNNN  Henrique
  */
 package livros;
 
