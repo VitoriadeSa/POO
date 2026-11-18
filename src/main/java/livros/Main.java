@@ -1,10 +1,10 @@
 /*
  * G16 - POO 2026/2027 - Trabalho Prático - T03 Os meus livros
  * Elementos do grupo:
- *   - aNNNNN Rodrigo
- *   - 54111  Vitória Sá
- *   - 54482  Inês Menezes
- *   - aNNNNN Henrique
+ *   - 53584 Rodrigo Ferrreira 
+ *   - 54111 Vitória Sá
+ *   - 54482 Inês Menezes
+ *   - 55129 Henrique Marques 
  */
 package livros;
 
