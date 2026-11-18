@@ -1,4 +1,4 @@
-# G99 — Os meus livros (T03)
+# G16 — Os meus livros (T03)
 
 Trabalho prático de POO 2026/2027 (UBI). Aplicação standalone para gerir uma coleção de livros.
 
