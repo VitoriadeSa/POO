@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox spacing="10" prefWidth="1000" prefHeight="600" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="livros.Controller">
+   <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+
+   <!-- Lado esquerdo: livros, empréstimos e estatísticas -->
+   <VBox spacing="8" HBox.hgrow="ALWAYS">
+      <TextField fx:id="txtPesquisa" promptText="Pesquisar por título, autor ou categoria" />
+      <Label text="Livros" />
+      <ListView fx:id="listaLivros" VBox.vgrow="ALWAYS" />
+      <Label text="Empréstimos" />
+      <ListView fx:id="listaEmprestimos" prefHeight="150" />
+      <Label fx:id="lblEstatisticas" />
+   </VBox>
+
+   <!-- Lado direito: formulário e botões -->
+   <VBox spacing="8" prefWidth="280">
+      <Label text="Novo livro (aquisição)" />
+      <TextField fx:id="txtTitulo" promptText="Título" />
+      <TextField fx:id="txtAutor" promptText="Autor" />
+      <TextField fx:id="txtIlustrador" promptText="Ilustrador (só para BD)" />
+      <TextField fx:id="txtCategoria" promptText="Categoria" />
+      <TextField fx:id="txtLocalizacao" promptText="Localização" />
+      <DatePicker fx:id="dpAquisicao" promptText="Data de aquisição" />
+      <TextField fx:id="txtPreco" promptText="Preço" />
+      <Button text="Adicionar" onAction="#adicionar" />
+
+      <Label text="Livro selecionado" />
+      <HBox spacing="8">
+         <Button text="Remover" onAction="#remover" />
+         <Button text="Desaparecido" onAction="#desaparecer" />
+         <Button text="Recuperado" onAction="#recuperar" />
+      </HBox>
+
+      <Label text="Empréstimo" />
+      <TextField fx:id="txtAmigo" promptText="Nome do amigo" />
+      <DatePicker fx:id="dpLimite" promptText="Devolver até" />
+      <HBox spacing="8">
+         <Button text="Emprestar" onAction="#emprestar" />
+         <Button text="Devolver" onAction="#devolver" />
+      </HBox>
+   </VBox>
+</HBox>

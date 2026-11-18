@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pt.ubi.poo</groupId>
-    <artifactId>G99-OsMeusLivros</artifactId>
+    <artifactId>G16-OsMeusLivros</artifactId>
     <version>1.0</version>
-    <name>G99 - Os meus livros</name>
+    <name>G16 - Os meus livros</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
