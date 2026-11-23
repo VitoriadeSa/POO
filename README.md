@@ -33,7 +33,11 @@ Precisa de JDK 17+ e Maven.
 ```bash
 mvn javafx:run
 ```
-
+Linux / macOS / Git Bash:
 ```bash
 mvn compile && java -cp target/classes livros.Main texto
+```
+Windows (PowerShell):
+```bash
+mvn compile; java -cp target/classes livros.Main texto
 ```
