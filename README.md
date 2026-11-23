@@ -72,10 +72,43 @@ Caso não tenha o **Maven** ou o **JDK 17** instalados, pode instalar tudo diret
 5. **Por fim, execute o projeto:**
    Entre na pasta raiz do projeto (onde está o `pom.xml`) e inicie a aplicação:
    ```powershell
-   cd Desktop\Livros
+   cd caminho\para\a\pasta\Livros
    mvn javafx:run
    ```
    Ou, para a interface de texto:
    ```powershell
    mvn compile; java -cp target/classes livros.Main texto
    ```
+### Como instalar os requisitos no Linux / macOS
+
+Caso não tenha o **Maven** ou o **JDK 17** instalados, pode instalá-los pelo terminal utilizando o gestor de pacotes do seu sistema:
+
+* **Ubuntu / Debian (Linux):**
+  ```bash
+  sudo apt update
+  sudo apt install openjdk-17-jdk maven
+  ```
+
+* **Fedora (Linux):**
+  ```bash
+  sudo dnf install java-17-openjdk-devel maven
+  ```
+
+* **Arch Linux:**
+  ```bash
+  sudo pacman -S jdk17-openjdk maven
+  ```
+
+* **macOS (usando [Homebrew](https://brew.sh/)):**
+  ```bash
+  brew install openjdk@17 maven
+  ```
+  *(Nota: No macOS, poderá ser necessário associar o JDK instalado ao sistema conforme indicado pelo Homebrew no final da instalação).*
+
+Após a instalação, confirme as versões (o Java deve mostrar `17` ou superior):
+```bash
+java -version
+mvn -version
+```
+
+> **Nota (Git Bash no Windows):** O Git Bash utiliza as ferramentas instaladas no próprio Windows. Siga os passos da secção anterior (PowerShell) e reinicie o Git Bash para que os comandos `java` e `mvn` fiquem disponíveis.
